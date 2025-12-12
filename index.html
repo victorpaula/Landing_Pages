@@ -11,232 +11,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/style.css">
 
-    <!-- <style>
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #111111;
-            --primary: #00ff88; /* Verde Neon */
-            --secondary: #bd93f9; /* Roxo Drácula */
-            --text-main: #e0e0e0;
-            --text-muted: #888888;
-            --font-code: 'Fira Code', monospace;
-            --font-body: 'Inter', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            overflow-x: hidden; /* Evita scroll horizontal indesejado */
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-
-        /* --- NAVBAR --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
-
+    
+ <!-- CSS EMBUTIDO (Para garantir o alinhamento da Logo) -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        /* Adicionei este ajuste aqui para não mexer no arquivo style.css agora */
         .logo {
-            font-family: var(--font-code);
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.1rem;
-            z-index: 1001;
-        }
-
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { font-family: var(--font-code); font-size: 0.85rem; color: var(--text-muted); }
-        .nav-links a:hover { color: var(--primary); }
-
-        .btn-tech {
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-family: var(--font-code);
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .btn-tech:hover { background: rgba(0, 255, 136, 0.1); box-shadow: 0 0 15px rgba(0, 255, 136, 0.4); }
-
-        /* Menu Hambúrguer (Mobile) */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: var(--text-main);
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* --- HERO --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 100%);
-        }
-
-        .hero-content { width: 100%; max-width: 800px; }
-
-        .code-tag { color: var(--secondary); font-family: var(--font-code); display: block; margin-bottom: 15px; }
-        
-        /* Tipografia Responsiva */
-        .hero h1 { 
-            font-size: clamp(2rem, 5vw, 4rem); /* Escala entre 2rem e 4rem */
-            font-weight: 700; 
-            margin-bottom: 15px; 
-            line-height: 1.1;
+            display: flex;         /* Coloca ícone e texto lado a lado */
+            align-items: center;   /* Centraliza verticalmente */
+            gap: 10px;            /* Espaço entre o ícone e o texto */
         }
         
-        .hero h2 { 
-            font-size: clamp(1.2rem, 3vw, 2rem); 
-            color: var(--text-muted); 
-            margin-bottom: 25px; 
+        /* Define o tamanho do ícone na logo */
+        .logo svg {
+            width: 24px;
+            height: 24px;
         }
-
-        .typing-effect {
-            border-right: 3px solid var(--primary);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: blink 0.75s step-end infinite;
-            padding-right: 5px;
-            max-width: fit-content;
-        }
-        @keyframes blink { 50% { border-color: transparent; } }
-
-        /* --- SECTIONS --- */
-        section { padding: 80px 10%; }
-        
-        .section-title {
-            font-family: var(--font-code);
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-        }
-        .section-title::before { content: ">"; color: var(--primary); margin-right: 10px; font-weight: bold; }
-        .section-title::after { content: ""; flex-grow: 1; height: 1px; background: #333; margin-left: 20px; }
-
-        /* --- SKILLS --- */
-        .skills-container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
-            gap: 15px; 
-        }
-        .skill-item {
-            background: var(--bg-card); border: 1px solid #333; padding: 12px;
-            text-align: center; border-radius: 5px; font-family: var(--font-code);
-            font-size: 0.8rem; transition: 0.3s;
-        }
-        .skill-item:hover { border-color: var(--secondary); color: var(--secondary); transform: translateY(-3px); }
-
-        /* --- EXPERIENCE & EDUCATION --- */
-        .timeline-container { border-left: 2px solid #333; padding-left: 30px; margin-left: 10px; }
-        
-        .job-card { position: relative; margin-bottom: 40px; }
-        .job-card::before {
-            content: ""; position: absolute; left: -39px; top: 5px;
-            width: 16px; height: 16px; background: var(--bg-dark);
-            border: 2px solid var(--primary); border-radius: 50%;
-        }
-
-        .job-title { font-size: 1.2rem; color: var(--text-main); font-weight: 600; }
-        .job-company { color: var(--primary); font-family: var(--font-code); font-size: 0.85rem; margin-bottom: 10px; display: block; }
-        .job-desc { color: var(--text-muted); font-size: 0.95rem; }
-        .job-desc li { margin-bottom: 8px; padding-left: 20px; position: relative; }
-        .job-desc li::before { content: "▹"; position: absolute; left: 0; color: var(--primary); }
-
-        .tech-tag {
-            display: inline-block; background: rgba(189, 147, 249, 0.1); color: var(--secondary);
-            padding: 3px 10px; border-radius: 3px; font-size: 0.75rem; font-family: var(--font-code);
-            margin-right: 5px; margin-bottom: 5px;
-        }
-
-        /* --- PROJECTS --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: var(--bg-card); padding: 25px; border-radius: 8px;
-            border: 1px solid #333; transition: 0.3s; height: 100%; display: flex; flex-direction: column;
-        }
-        .project-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        
-        .project-link {
-            color: var(--text-muted); font-size: 1.4rem; transition: 0.3s;
-        }
-        .project-link:hover { color: var(--primary); }
-
-        /* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
-        @media (max-width: 768px) {
-            section { padding: 60px 5%; }
-            
-            /* Navbar Mobile */
-            .hamburger { display: block; }
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 0;
-                gap: 0;
-                flex-direction: column;
-                background-color: rgba(10, 10, 10, 0.98);
-                width: 75%; /* Menu ocupa 75% da tela */
-                height: 100%;
-                text-align: center;
-                transition: 0.3s;
-                justify-content: center;
-                box-shadow: 10px 0 20px rgba(0,0,0,0.5);
-            }
-            .nav-links.active { left: 0; }
-            .nav-links a { font-size: 1.2rem; margin: 20px 0; display: block; }
-            
-            /* Ajuste Hero */
-            .hero { padding-top: 60px; text-align: left; }
-            
-            /* Ajuste Timeline */
-            .timeline-container { padding-left: 20px; margin-left: 5px; }
-            .job-card::before { left: -29px; }
-            
-            /* Ajuste Grid Mobile */
-            .projects-grid { grid-template-columns: 1fr; } /* 1 coluna no mobile */
-        }
-        
-        /* Animação do Hamburguer */
-        .hamburger.active .bar:nth-child(2) { opacity: 0; }
-        .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    </style> -->
+    </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">&lt;VictorC /&gt;</div>
+        <!-- LOGO ATUALIZADA COM O ÍCONE SVG -->
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bd93f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+            &lt;VictorC /&gt;
+        </div>
         
         <ul class="nav-links">
             <li><a href="#about" onclick="closeMenu()">01. Sobre</a></li>
